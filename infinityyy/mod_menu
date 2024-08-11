@@ -1,0 +1,77 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "Infinityyy Dress to Impress 👗", HidePremium = false, SaveConfig = true, ConfigFolder = "InfinityDress"})
+
+local mainTab = Window:MakeTab({
+    Name = "Main",
+    Icon = "rbxassetid://18837606113",
+    PremiumOnly = false
+})
+
+local customizationTab = Window:MakeTab({
+    Name = "Customização",
+    Icon = "rbxassetid://18837725784",
+    PremiumOnly = false
+})
+
+local teleportTab = Window:MakeTab({
+    Name = "Teleportes",
+    Icon = "rbxassetid://18837725784",
+    PremiumOnly = false
+})
+
+OrionLib:MakeNotification({
+    Name = "Infinityyy was loaded!",
+    Content = "This script was made by Alodozhynn",
+    Image = "rbxassetid://4483345998",
+    Time = 5
+})
+
+-- Seção de customização de avatar
+customizationTab:AddSection({
+    Name = "Personalizar Avatar"
+})
+
+customizationTab:AddButton({
+    Name = "Remover Todas as Roupas",
+    Callback = function()
+        for _, item in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+            if item:IsA("Accessory") or item:IsA("Shirt") or item:IsA("Pants") then
+                item:Destroy()
+            end
+        end
+    end    
+})
+
+customizationTab:AddButton({
+    Name = "Aplicar Outfit Padrão",
+    Callback = function()
+        -- Exemplo de aplicação de um outfit padrão
+        local player = game.Players.LocalPlayer
+        local humanoid = player.Character:FindFirstChildOfClass("Humanoid")
+        humanoid:AddAccessory(game:GetService("InsertService"):LoadAsset(12345678):GetChildren()[1])  -- ID do acessório
+        humanoid.Shirt.ShirtTemplate = "rbxassetid://12345678"  -- ID da camisa
+        humanoid.Pants.PantsTemplate = "rbxassetid://12345678"  -- ID da calça
+    end    
+})
+
+-- Seção de teleportes
+teleportTab:AddSection({
+    Name = "Teleportar para Locais"
+})
+
+teleportTab:AddButton({
+    Name = "Área de Desfile",
+    Callback = function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(0, 10, 0)  -- Substitua as coordenadas por uma localização específica do jogo
+    end    
+})
+
+teleportTab:AddButton({
+    Name = "Loja de Roupas",
+    Callback = function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(100, 10, 100)  -- Substitua as coordenadas por uma localização específica do jogo
+    end    
+})
+
+-- Inicializando a biblioteca Orion
+OrionLib:Init()
