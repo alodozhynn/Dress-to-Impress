@@ -1,0 +1,44 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "☀️Sunlight y Hub☀️ | Dress to Impress", HidePremium = false, IntroEnabled = true, IntroText = "https://youtube.com/c/AlodoTocagaming11", SaveConfig = true, ConfigFolder = "123-_-_-xxwjrOrionDresstoimpress"})
+
+local customizationTab = Window:MakeTab({
+    Name = "Customization",
+    Icon = "rbxassetid://18837725784",
+    PremiumOnly = false
+})
+
+OrionLib:MakeNotification({
+    Name = "Sunlight y Hub was loaded!",
+    Content = "https://youtube.com/c/AlodoTocagaming11",
+    Image = "rbxassetid://4483345998",
+    Time = 5
+})
+
+-- Seção de customização de avatar
+customizationTab:AddSection({
+    Name = "Personalizar Avatar"
+})
+local changetone =
+getgenv().lmao = not getgenv().lmao
+task.spawn(function()
+    while true do
+        task.wait()
+        if not getgenv().lmao then
+            break
+        end
+        local args = {
+            [1] = "Change Skintone",
+            [2] = Color3.new(math.random(), math.random(), math.random())
+        }
+    
+        game:GetService("ReplicatedStorage"):WaitForChild("Dress Up"):WaitForChild("RemoteEvent"):FireServer(unpack(args))
+    end
+end)
+customizationTab:AddButton({
+    Name = "Colorful character",
+    Callback = function()
+  changetone
+end    
+})
+-- script  Orion finalization
+OrionLib:Init()
